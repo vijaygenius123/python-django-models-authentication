@@ -23,8 +23,8 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tag_posts', args=[str(self.name)])
 
-    def clean(self):
-        return self.name.lower()
+    def clean(self, name):
+        self.name = name.lower()
 
     def __str__(self):
         return self.name
