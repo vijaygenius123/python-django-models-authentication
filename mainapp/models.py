@@ -20,6 +20,9 @@ class BlogPost(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
+    def get_absolute_url(self):
+        return reverse('tag_posts', args=[str(self.name)])
+
     def clean(self):
         return self.name.lower()
 
